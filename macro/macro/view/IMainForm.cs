@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace macro
 {
-    class Model
+    public interface IMainForm
     {
+        void SetStatus(string status);
     }
 }

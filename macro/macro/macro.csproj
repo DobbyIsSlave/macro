@@ -46,8 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="KeyConstants.cs" />
+    <Compile Include="KeyEventAPI.cs" />
     <Compile Include="model\Model.cs" />
     <Compile Include="presenter\Presenter.cs" />
+    <Compile Include="view\IMainForm.cs" />
     <Compile Include="view\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

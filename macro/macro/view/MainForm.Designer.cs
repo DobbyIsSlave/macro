@@ -60,8 +60,12 @@
             this.ClientSize = new System.Drawing.Size(399, 237);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblStatus);
+            this.KeyPreview = true;
             this.Name = "MainForm";
             this.Text = "MainForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
+            this.Load += new System.EventHandler(this.MainForm_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 
