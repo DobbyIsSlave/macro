@@ -17,22 +17,12 @@ namespace macro
 
         public void MainFormLoad()
         {
-            
+            KeyEventAPI.HookStart();
         }
 
         public void MainFormClosing()
         {
             KeyEventAPI.HookEnd();
-        }
-
-        public void MacroStart()
-        {
-            KeyEventAPI.HookStart();
-        }
-
-        public void MacroEnd()
-        {
-            
         }
 
         public void OnSetStatus(string status)

@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="sharpAHK, Version=1.0.0.5, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\sharpAHK.1.0.0.5\lib\net45\sharpAHK.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -47,7 +50,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="KeyConstants.cs" />
-    <Compile Include="KeyEventAPI.cs" />
+    <Compile Include="presenter\AutoHotKeyAPI.cs" />
+    <Compile Include="presenter\KeyEventAPI.cs" />
     <Compile Include="model\Model.cs" />
     <Compile Include="presenter\Presenter.cs" />
     <Compile Include="view\IMainForm.cs" />
@@ -71,6 +75,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
