@@ -50,7 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="KeyConstants.cs" />
-    <Compile Include="presenter\AutoHotKeyAPI.cs" />
+    <Compile Include="ahk\Ahk.cs" />
     <Compile Include="presenter\KeyEventAPI.cs" />
     <Compile Include="model\Model.cs" />
     <Compile Include="presenter\Presenter.cs" />
@@ -75,6 +75,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="ahk\Blaster.ahk" />
+    <None Include="ahk\Doing.ahk" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

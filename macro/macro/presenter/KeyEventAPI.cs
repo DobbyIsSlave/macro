@@ -11,7 +11,9 @@ namespace macro
 {
     public class KeyEventAPI
     {
-        private static bool bStart = false;
+        private bool bStart = false;
+        private IKeyEventAPIListener keyEventAPIListener;
+        private Thread thread;
 
         [DllImport("user32.dll")]
         private static extern void keybd_event(byte bVk, byte bScan, uint dwFlags, int dwExtraInfo);
@@ -20,7 +22,7 @@ namespace macro
         private static extern IntPtr CallNextHookEx(IntPtr hhk, int nCode, IntPtr wParam, IntPtr lParam);
 
         [DllImport("user32.dll")]
-        private static extern IntPtr SetWindowsHookEx(int idHook, LowLevelKeyboardProc lpfn, IntPtr hMod, uint dwThreadId);
+        private static extern IntPtr SetWindowsHookEx(int idHook, LowLevelKeyboardProcDelegate lpfn, IntPtr hMod, uint dwThreadId);
 
         [DllImport("kernel32.dll")]
         private static extern IntPtr GetModuleHandle(string lpModuleName);
@@ -40,30 +42,40 @@ namespace macro
         [DllImport("user32.dll")]
         public static extern IntPtr PostMessage(IntPtr hWnd, uint Msg, IntPtr wParam, IntPtr lParam);
 
+        [DllImport("user32.dll")]
+        public static extern ushort GetAsyncKeyState(int vKey);
+
         private const int WH_KEYBOARD = 2;
         private const int WH_KEYBOARD_LL = 13;
         private const int WM_KEYDOWN = 0x0100;
         private const int WM_KEYUP = 0x0101;
-        private static LowLevelKeyboardProc _proc = HookCallBack;
         private static IntPtr _hookID = IntPtr.Zero;
 
-        private delegate IntPtr LowLevelKeyboardProc(int nCode, IntPtr wParam, IntPtr lParam);
+        private delegate IntPtr LowLevelKeyboardProcDelegate(int nCode, IntPtr wParam, IntPtr lParam);
 
-        public static void HookStart()
+        public KeyEventAPI(IKeyEventAPIListener keyEventAPIListener)
+        {
+            this.keyEventAPIListener = keyEventAPIListener;
+            AHK ahk = new AHK();
+            thread = new Thread(ahk.doing);
+            thread.IsBackground = true;
+        }
+
+        public void HookStart()
         {
             using (Process curProcess = Process.GetCurrentProcess())
             using (ProcessModule curModule = curProcess.MainModule)
             {
-                _hookID = SetWindowsHookEx(WH_KEYBOARD_LL, _proc, GetModuleHandle(curModule.ModuleName), 0);
+                _hookID = SetWindowsHookEx(WH_KEYBOARD_LL, LowLevelKeyboardProc, GetModuleHandle(curModule.ModuleName), 0);
             }
         }
 
-        public static void HookEnd()
+        public void HookEnd()
         {
             UnhookWindowsHookEx(_hookID);
         }
 
-        private static IntPtr HookCallBack(int nCode, IntPtr wParam, IntPtr lParam)
+        private IntPtr LowLevelKeyboardProc(int nCode, IntPtr wParam, IntPtr lParam)
         {
             if (nCode >= 0 && wParam == (IntPtr)WM_KEYDOWN)
             {
@@ -71,33 +83,46 @@ namespace macro
                 if ((Keys)vkCode == Keys.F1)
                 {
                     bStart = true;
+                    keyEventAPIListener.OnSetStatus("On");
                 }
                 else if ((Keys)vkCode == Keys.F2)
                 {
                     bStart = false;
+                    keyEventAPIListener.OnSetStatus("Off");
                 }
-                else if ((Keys)vkCode == Keys.A)
+                else if ((Keys)vkCode == Keys.S)
                 {
                     /*SendMessage(FindWindow(null, "MapleStory"), WM_KEYDOWN, ((IntPtr)Key.VK_C), IntPtr.Zero);
-                    Delay(100);
-                    SendMessage(FindWindow(null, "MapleStory"), WM_KEYUP, ((IntPtr)Key.VK_C), IntPtr.Zero);
+                    SendMessage(FindWindow(null, "MapleStory"), WM_KEYUP, ((IntPtr)Key.VK_C), IntPtr.Zero);*/
 
-                    KeyDown(Key.VK_C);
-                    Delay(100);
-                    KeyUp(Key.VK_C);
+                    /*if (!IsKeyPress((int)Keys.A) || !thread.IsAlive)
+                    {
+                        thread.Start();
+                    }*/
 
-                    SendKeys.Send("c");
-                    SendKeys.SendWait("c");*/
-                    //AutoHotKeyAPI.a();
-                    Delay(100); // TODO 딜레이 해결
+                    if (bStart == false)
+                    {
+                        bStart = true;
+                        thread.Start();
+                    }
+
+                    //Delay(100); // TODO 딜레이 해결
+
                     return (IntPtr)1;
                 }
             }
             else if (nCode >= 0 && wParam == (IntPtr)WM_KEYUP)
             {
                 int vkCode = Marshal.ReadInt32(lParam);
-                if ((Keys)vkCode == Keys.A)
+                if ((Keys)vkCode == Keys.S)
                 {
+                    if (bStart == true)
+                    {
+                        thread.Interrupt();
+                        thread.Join();
+                        bStart = false;
+                    }
+                        
                     return (IntPtr)1;
                 }
             }
@@ -119,6 +144,21 @@ namespace macro
         {
             int t = Environment.TickCount;
             while ((Environment.TickCount - t) < delay) ;
+        }
+
+        private static bool IsKeyPress(int key)
+        {
+            ushort state = GetAsyncKeyState(key);
+            if (state == 32768 || state == 32769)
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show(state.ToString());
+            }
+
+            return false;
         }
     }
 }
