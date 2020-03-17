@@ -146,3 +146,52 @@ ransleep(min,max)
 	sleep, rand
 }
 return
+
+ransleepwithkeyevent(min, max)
+{
+	rankeyevent()
+	ransleep(min, max)
+}
+return
+
+rankeyevent()
+{
+	Random, rand, 0, 6
+	if (rand = 0)
+	{
+		keyevent("^!a")
+	}
+	else if (rand = 1)
+	{
+		keyevent("^!b")
+	}
+	else if (rand = 2)
+	{
+		keyevent("^!c")
+	}
+	else if (rand = 3)
+	{
+		keyevent("^!d")
+	}
+	else if (rand = 4)
+	{
+		keyevent("^!e")
+	}
+	else if (rand = 5)
+	{
+		keyevent("^!f")
+	}
+	else if (rand = 6)
+	{
+		keyevent("^!g")
+	}
+}
+return
+
+keyevent(key)
+{
+	Send {%key% down}
+	ransleep(1, 3)
+	Send {%key% up}
+	ransleep(1, 3)
+}

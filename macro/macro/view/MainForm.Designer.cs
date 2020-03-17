@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.lblStatus = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -35,31 +36,37 @@
             // lblStatus
             // 
             this.lblStatus.AutoSize = true;
+            this.lblStatus.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.lblStatus.ForeColor = System.Drawing.Color.Red;
-            this.lblStatus.Location = new System.Drawing.Point(367, 9);
+            this.lblStatus.Location = new System.Drawing.Point(546, 3);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lblStatus.Size = new System.Drawing.Size(20, 12);
             this.lblStatus.TabIndex = 0;
             this.lblStatus.Text = "Off";
             this.lblStatus.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.lblStatus.Visible = false;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(323, 9);
+            this.label1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.label1.Location = new System.Drawing.Point(502, 3);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(44, 12);
             this.label1.TabIndex = 1;
             this.label1.Text = "Status:";
+            this.label1.Visible = false;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(399, 237);
+            this.BackgroundImage = global::macro.Properties.Resources.Lady;
+            this.ClientSize = new System.Drawing.Size(599, 601);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblStatus);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Text = "MainForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);

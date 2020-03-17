@@ -111,20 +111,72 @@ return
 
 MagPang()
 {
-	Send {v down}
+	Send {LShift down}
 	ransleep(10, 20)
-	Send {a down}
+	Send {Ins down}
 	ransleep(10, 20)
-	Send {a up}
-	ransleep(100, 120)
-	Send {o down}
+	Send {Ins up}
+	ransleep(110, 130)
+	Send {Home down}
 	ransleep(10, 20)
-	Send {o up}
-	ransleep(150, 170)
-	Send {v up}
-	ransleep(1, 3)
-	Send {c}
-	ransleep(70, 80)
+	Send {Home up}
+	ransleep(170, 190)
+	Send {LShift up}
+	ransleep(10, 20)
+	Send {c down}
+	ransleep(10, 20)
+	Send {c UP}
+	ransleep(100, 110)
+}
+return
+
+MagPangSlow()
+{
+	Send {LShift down}
+	rankeyevent()
+	ransleep(19, 31)
+	Send {Ins down}
+	rankeyevent()
+	ransleep(20, 27)
+	Send {Ins up}
+	rankeyevent()
+	ransleep(119, 135)
+	Send {Home down}
+	rankeyevent()
+	ransleep(18, 30)
+	Send {Home up}
+	rankeyevent()
+	ransleep(171, 191)
+	Send {LShift up}
+	ransleep(16, 22)
+	Send {c down}
+	rankeyevent()
+	ransleep(19, 30)
+	Send {c UP}
+	rankeyevent()
+	ransleep(101, 123)
+}
+return
+
+MagPangFast()
+{
+	Send {LShift down}
+	ransleep(10, 20)
+	Send {Ins down}
+	ransleepwithkeyevent(2, 4)
+	Send {Ins up}
+	ransleep(110, 130)
+	Send {Home down}
+	ransleepwithkeyevent(2, 4)
+	Send {Home up}
+	ransleepwithkeyevent(165, 185)
+	Send {LShift up}
+	ransleep(10, 20)
+	Send {c down}
+	ransleepwithkeyevent(2, 4)
+	Send {c UP}
+	rankeyevent()
+	ransleep(85, 90)
 }
 return
 

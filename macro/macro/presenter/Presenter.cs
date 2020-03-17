@@ -9,27 +9,22 @@ namespace macro
     public class Presenter : IKeyEventAPIListener
     {
         IMainForm mainFormView;
-        KeyEventAPI keyEventAPI;
 
         public Presenter(IMainForm mainFormView)
         {
             this.mainFormView = mainFormView;
-            keyEventAPI = new KeyEventAPI(this);
         }
 
         public void MainFormLoad()
         {
-            //KeyEventAPI.HookStart();
-            //keyEventAPI.HookStart();
             AHK ahk = new AHK();
             ahk.LoadHotKeyFile();
-            ahk.MakeHotKey();
+            ahk.HotKeyRegister();
         }
 
         public void MainFormClosing()
         {
-            //KeyEventAPI.HookEnd();
-            //keyEventAPI.HookEnd();
+
         }
 
         public void OnSetStatus(string status)

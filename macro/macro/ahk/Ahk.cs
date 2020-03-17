@@ -36,11 +36,8 @@ namespace macro
 
         public void doing()
         {
-            while (true)
-            {
-                ahk.ExecFunction("MagPang");
-                Thread.Sleep(50);
-            }
+            ahk.ExecFunction("MagPang");
+            Thread.Sleep(50);
         }
 
         public void LoadHotKeyFile()
@@ -49,31 +46,17 @@ namespace macro
             ahk.LoadFile("C:\\macro\\macro\\macro\\ahk\\Blaster.ahk");
         }
 
-        public void MakeHotKey()
+        public void HotKeyRegister()
         {
             StringBuilder str = new StringBuilder();
+            str.AppendLine("a::");
+            str.AppendLine(@"MagPangFast()");
+            str.AppendLine("return");
             str.AppendLine("s::");
-            //ahk.ExecFunction("MagPang");
-            str.AppendLine("MagPang()");
+            str.AppendLine(@"MagPang()");
             str.AppendLine("return");
             ahk.ExecRaw(str.ToString());
- 
-            /*StringBuilder str = new StringBuilder();
-            str.AppendLine("a::");
-            str.AppendLine("Send {c down}");
-            str.AppendLine("sleep, 50");
-            str.AppendLine("Send {c up}");
-            str.AppendLine("sleep, 100");
-            str.AppendLine("return");
-            ahk.ExecRaw(str.ToString());*/
-
-            /*ahk.ExecRaw("Send {c down}");
-            ahk.ExecRaw("sleep, 50");
-            ahk.ExecRaw("Send {c up}");
-            ahk.ExecRaw("sleep, 50");
-            ahk.ExecRaw("return");*/
         }
-
 
         public void MakeAttack()
         {

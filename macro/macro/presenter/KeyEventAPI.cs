@@ -56,8 +56,7 @@ namespace macro
         public KeyEventAPI(IKeyEventAPIListener keyEventAPIListener)
         {
             this.keyEventAPIListener = keyEventAPIListener;
-            AHK ahk = new AHK();
-            thread = new Thread(ahk.doing);
+            thread = new Thread(AHK.C_Press);
             thread.IsBackground = true;
         }
 
