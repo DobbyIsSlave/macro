@@ -1,9 +1,9 @@
 ﻿doattack(key)
 {
 	Send {%key% down}
-	ransleep(50,100)
+	RanSleep(50,100)
 	Send {%key% up}
-	ransleep(150,200)
+	RanSleep(150,200)
 }
 return
 
@@ -13,13 +13,13 @@ dojumpattack(direction, key)
 	{
 		domovewithjump("left")
 		ranattack(95, key)
-		ransleep(100,150)
+		RanSleep(100,150)
 	}
 	else
 	{
 		domovewithjump("right")
 		ranattack(95, key)
-		ransleep(100,150)
+		RanSleep(100,150)
 	}
 }
 return
@@ -40,24 +40,24 @@ return
 domoveattack(direction, key)
 {
 	Send {%direction% down}
-	ransleep(50,100)
+	RanSleep(50,100)
 	doattack(key)
 	Send {%direction% up}
-	ransleep(50, 100)
+	RanSleep(50, 100)
 }
 return
 
 domoveattack2(direction1, direction2, key)
 {
 	Send {%direction1% down}
-	ransleep(30,70)
+	RanSleep(30,70)
 	Send {%direction2% down}
-	ransleep(50,100)
+	RanSleep(50,100)
 	doattack(key)
 	Send {%direction1% up}
-	ransleep(30,70)
+	RanSleep(30,70)
 	Send {%direction2% up}
-	ransleep(50, 100)
+	RanSleep(50, 100)
 }
 return
 
@@ -91,107 +91,127 @@ domovewithjump(direction)
 {
 	Send {%direction% down}
 	dojump()
-	ransleep(5,70)
+	RanSleep(5,70)
 	Send {%direction% up}
-	ransleep(20, 30)
+	RanSleep(20, 30)
 }
 return
 
 dojump()
 {
 	Send {c down}
-	ransleep(5,30)
+	RanSleep(5,30)
 	Send {c up}
-	ransleep(5,30)
+	RanSleep(5,30)
 	Send {c down}
-	ransleep(5,30)
+	RanSleep(5,30)
 	Send {c up}
-	ransleep(5,30)
+	RanSleep(5,30)
 }
 return
 
 dojumpdown()
 {
 	Send {down down}
-	ransleep(5,70)
+	RanSleep(5,70)
 	Send {c down}
-	ransleep(5,70)
+	RanSleep(5,70)
 	Send {c up}
-	ransleep(5,70)
+	RanSleep(5,70)
 	Send {down up}
-	ransleep(5,70)
+	RanSleep(5,70)
 }
 return
 
 dojumpup()
 {
 	Send {c down}
-	ransleep(5,70)
+	RanSleep(5,70)
 	Send {up down}
-	ransleep(5,70)
+	RanSleep(5,70)
 	Send {up up}
-	ransleep(5,70)
+	RanSleep(5,70)
 	Send {up down}
-	ransleep(5,70)
+	RanSleep(5,70)
 	Send {up up}
-	ransleep(5,70)
+	RanSleep(5,70)
 	Send {c up}
-	ransleep(5,70)
+	RanSleep(5,70)
 }
 return
 
-ransleep(min,max)
+RanSleepWithKeyEvent(min, max)
+{
+	RanKeyEvent()
+	RanSleep(min, max)
+}
+return
+
+RanSleepOrEvent(count, min, max)
+{
+	Loop, %count%
+	{
+		Random, rand, 0, 2
+		{
+			if (rand = 0 || rand = 1)
+			{
+				RanKeyEvent()
+			}
+			else if (rand = 2)
+			{
+				RanSleep(25, 30)
+			}
+		}
+	}
+	RanSleep(min, max)
+}
+return
+
+RanKeyEvent()
+{
+	Random, rand, 0, 6
+	if (rand = 0)
+	{
+		KeyEvent("^!a")
+	}
+	else if (rand = 1)
+	{
+		KeyEvent("^!b")
+	}
+	else if (rand = 2)
+	{
+		KeyEvent("^!c")
+	}
+	else if (rand = 3)
+	{
+		KeyEvent("^!d")
+	}
+	else if (rand = 4)
+	{
+		KeyEvent("^!e")
+	}
+	else if (rand = 5)
+	{
+		KeyEvent("^!f")
+	}
+	else if (rand = 6)
+	{
+		KeyEvent("^!g")
+	}
+}
+return
+
+KeyEvent(key)
+{
+	RanSleep(12, 14)
+	Send {%key% down}
+	RanSleep(13, 15)
+	Send {%key% up}
+}
+
+RanSleep(min,max)
 {
 	Random, rand, min, max
 	sleep, rand
 }
 return
-
-ransleepwithkeyevent(min, max)
-{
-	rankeyevent()
-	ransleep(min, max)
-}
-return
-
-rankeyevent()
-{
-	Random, rand, 0, 6
-	if (rand = 0)
-	{
-		keyevent("^!a")
-	}
-	else if (rand = 1)
-	{
-		keyevent("^!b")
-	}
-	else if (rand = 2)
-	{
-		keyevent("^!c")
-	}
-	else if (rand = 3)
-	{
-		keyevent("^!d")
-	}
-	else if (rand = 4)
-	{
-		keyevent("^!e")
-	}
-	else if (rand = 5)
-	{
-		keyevent("^!f")
-	}
-	else if (rand = 6)
-	{
-		keyevent("^!g")
-	}
-}
-return
-
-keyevent(key)
-{
-	Send {%key% down}
-	ransleep(1, 3)
-	Send {%key% up}
-	ransleep(1, 3)
-}
