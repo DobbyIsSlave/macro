@@ -137,17 +137,17 @@ MagPangFast()
 	Send {Ins down}
 	RanSleep(10, 20)
 	Send {Ins up}
-	RanSleep(110, 130)
+	RanSleepOrEvent(4, 10, 15)
 	Send {Home down}
 	RanSleep(10, 20)
 	Send {Home up}
-	RanSleep(170, 190)
+	RanSleepOrEvent(6, 20, 25)
 	Send {LShift up}
 	RanSleep(10, 20)
 	Send {c down}
 	RanSleep(10, 20)
 	Send {c up}
-	RanSleep(100, 110)
+	RanSleepOrEvent(3, 25, 30)
 }
 return
 

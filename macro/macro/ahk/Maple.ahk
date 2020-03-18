@@ -1,19 +1,26 @@
-﻿global macroActive := false
+﻿SetBatchLines, -1
+global macroActive := false
 
-PgUp::
-if (macroActive = false)
+a::
+if (macroActive = true)
 {
-	macroActive := true
-	hotkey, a, BlasterA, On
+	MagPangFast()
 }
 else
 {
-	macroActive := false
-	hotkey, a, BlasterA, Off
+	Send, a
 }
 return
 
-BlasterA:
-
-MagPangFast()
+PgUp::
+{
+	if (macroActive = true)
+	{
+		macroActive := false
+	}
+	else
+	{
+		macroActive := true
+	}
+}
 return
