@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using sharpAHK;
 using System.Threading;
+using System.IO;
 
 namespace macro
 {
@@ -16,76 +17,22 @@ namespace macro
         {
             ahk = new AutoHotkey.Interop.AutoHotkeyEngine();
         }
-        public static void C_Press()
-        {
-            var ahk = new AutoHotkey.Interop.AutoHotkeyEngine();
-            try
-            {
-                while (true)
-                {
-                    ahk.ExecRaw("Send {c down}");
-                    ahk.ExecRaw("sleep, 50");
-                    ahk.ExecRaw("Send {c up}");
-                    Thread.Sleep(50);
-                }
-            }
-            catch (Exception e)
-            {
-            }
-        }
-
-        public void doing()
-        {
-            ahk.ExecFunction("MagPang");
-            Thread.Sleep(50);
-        }
 
         public void LoadHotKeyFile()
         {
-            ahk.LoadFile("C:\\macro\\macro\\macro\\ahk\\Doing.ahk");
-            ahk.LoadFile("C:\\macro\\macro\\macro\\ahk\\Blaster.ahk");
+            ahk.LoadFile(Constants.doingFilePath);
+            ahk.LoadFile(Constants.blasterFilePath);
+            //ahk.LoadFile(Constants.mapleFilePath);
         }
 
         public void HotKeyRegister()
         {
+            string line;
+            StreamReader file = new StreamReader(Constants.mapleFilePath);
             StringBuilder str = new StringBuilder();
-            str.AppendLine("a::");
-            str.AppendLine(@"MagPangFast()");
-            str.AppendLine("return");
-            str.AppendLine("s::");
-            str.AppendLine(@"MagPang()");
-            str.AppendLine("return");
+            while ((line = file.ReadLine()) != null)
+                str.AppendLine(line);
             ahk.ExecRaw(str.ToString());
-        }
-
-        public void MakeAttack()
-        {
-
-        }
-
-        public void MakeRandom()
-        {
-            StringBuilder name = new StringBuilder();
-            name.AppendLine("ransleep(min, max)");
-
-            StringBuilder doing = new StringBuilder();
-            doing.AppendLine("Random, rand, min, max");
-            doing.AppendLine("sleep, rand");
-
-            string str = MakeBaseFunction("ransleep(min, max)", doing.ToString());
-
-            ahk.ExecRaw(str);
-        }
-
-        public string MakeBaseFunction(string name, string doing)
-        {
-            StringBuilder str = new StringBuilder();
-            str.AppendLine(name);
-            str.AppendLine("{");
-            str.AppendLine(doing);
-            str.AppendLine("return");
-            str.AppendLine("}");
-            return str.ToString();
         }
     }
 }
