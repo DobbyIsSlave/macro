@@ -20,6 +20,7 @@ namespace macro
 
         public void LoadHotKeyFile()
         {
+            ahk.LoadFile(Constants.classDDFilePath);
             ahk.LoadFile(Constants.doingFilePath);
             ahk.LoadFile(Constants.blasterFilePath);
             //ahk.LoadFile(Constants.mapleFilePath);

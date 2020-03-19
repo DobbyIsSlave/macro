@@ -204,14 +204,28 @@ return
 KeyEvent(key)
 {
 	RanSleep(12, 14)
-	Send {%key% down}
+	;Send {%key% down}
+	KeyDown(key)
 	RanSleep(13, 15)
-	Send {%key% up}
+	;Send {%key% up}
+	KeyUp(key)
 }
 
 RanSleep(min,max)
 {
 	Random, rand, min, max
 	sleep, rand
+}
+return
+
+KeyDown(key)
+{
+	DD._key(key, "Down")
+}
+return
+
+KeyUp(key)
+{
+	DD._key(key, "Up")
 }
 return

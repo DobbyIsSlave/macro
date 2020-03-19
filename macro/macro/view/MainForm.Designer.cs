@@ -62,8 +62,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::macro.Properties.Resources.Lady;
-            this.ClientSize = new System.Drawing.Size(599, 601);
+            this.BackgroundImage = global::macro.Properties.Resources.Sora;
+            this.ClientSize = new System.Drawing.Size(224, 401);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblStatus);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

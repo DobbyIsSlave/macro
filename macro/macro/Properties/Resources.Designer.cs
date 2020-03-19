@@ -63,9 +63,9 @@ namespace macro.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
-        internal static System.Drawing.Bitmap Lady {
+        internal static System.Drawing.Bitmap Sora {
             get {
-                object obj = ResourceManager.GetObject("Lady", resourceCulture);
+                object obj = ResourceManager.GetObject("Sora", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

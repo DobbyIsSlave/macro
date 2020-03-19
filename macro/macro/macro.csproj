@@ -55,6 +55,11 @@
     <Compile Include="presenter\KeyEventAPI.cs" />
     <Compile Include="model\Model.cs" />
     <Compile Include="presenter\Presenter.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="view\IMainForm.cs" />
     <Compile Include="view\MainForm.cs">
       <SubType>Form</SubType>
@@ -69,15 +74,11 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="ahk\Blaster.ahk" />
+    <None Include="ahk\Class_DD.ahk" />
     <None Include="ahk\Doing.ahk" />
     <None Include="ahk\Maple.ahk" />
     <None Include="packages.config" />
@@ -95,7 +96,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Lady.png" />
+    <None Include="Sora.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

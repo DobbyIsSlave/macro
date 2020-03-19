@@ -173,6 +173,27 @@ MagPangSlow()
 }
 return
 
+MagPangTest()
+{
+	KeyDown("LShift")
+	RanSleep(10, 20)
+	KeyDown("Ins")
+	RanSleep(10, 20)
+	KeyDown("Ins")
+	RanSleepOrEvent(4, 10, 15)
+	KeyDown("Home")
+	RanSleep(10, 20)
+	KeyDown("Home")
+	RanSleepOrEvent(6, 20, 25)
+	KeyDown("LShift")
+	RanSleep(10, 20)
+	KeyDown("c")
+	RanSleep(10, 20)
+	KeyDown("c")
+	RanSleepOrEvent(3, 25, 30)
+}
+return
+
 RelaseHammer()
 {
 	Send {f down}
