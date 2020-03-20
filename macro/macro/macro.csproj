@@ -49,8 +49,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Constants.cs" />
-    <Compile Include="KeyConstants.cs" />
+    <Compile Include="model\Constants.cs" />
+    <Compile Include="model\KeyConstants.cs" />
     <Compile Include="ahk\Ahk.cs" />
     <Compile Include="presenter\KeyEventAPI.cs" />
     <Compile Include="model\Model.cs" />

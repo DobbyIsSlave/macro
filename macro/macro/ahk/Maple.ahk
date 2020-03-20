@@ -1,12 +1,10 @@
 ﻿SetBatchLines, -1
 global macroActive := false
 
-SetWorkingDir %A_ScriptDir%
-
 a::
 if (macroActive = true)
 {
-	MagPangFast()
+	MagPangHardware()
 }
 else
 {
@@ -21,7 +19,7 @@ PgUp::
 		macroActive := false
 	}
 	else
-	{
+	{ 
 		macroActive := true
 	}
 }

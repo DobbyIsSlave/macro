@@ -173,7 +173,7 @@ MagPangSlow()
 }
 return
 
-MagPangTest()
+MagPangHardware()
 {
 	KeyDown("LShift")
 	RanSleep(10, 20)

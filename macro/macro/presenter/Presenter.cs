@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace macro
 {
@@ -17,9 +18,17 @@ namespace macro
 
         public void MainFormLoad()
         {
-            AHK ahk = new AHK();
-            ahk.LoadHotKeyFile();
-            ahk.HotKeyRegister();
+            try
+            {
+                AHK ahk = new AHK();
+                ahk.LoadHotKeyFile();
+                ahk.HotKeyRegister();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            
         }
 
         public void MainFormClosing()

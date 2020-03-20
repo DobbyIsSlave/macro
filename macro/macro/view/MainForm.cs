@@ -29,13 +29,7 @@ namespace macro
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            try
-            {
-                presenter.MainFormClosing();
-            }
-            catch(Exception ex)
-            {
-            }
+            presenter.MainFormClosing();
         }
 
         public void SetStatus(string status)
