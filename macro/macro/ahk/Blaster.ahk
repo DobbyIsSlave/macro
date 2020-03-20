@@ -117,9 +117,9 @@ MagPang()
 	RanSleep(10, 20)
 	Send {Ins up}
 	RanSleep(110, 130)
-	Send {Home down}
+	Send {PgUp down}
 	RanSleep(10, 20)
-	Send {Home up}
+	Send {PgUp up}
 	RanSleep(170, 190)
 	Send {LShift up}
 	RanSleep(10, 20)
@@ -138,9 +138,9 @@ MagPangFast()
 	RanSleep(10, 20)
 	Send {Ins up}
 	RanSleepOrEvent(4, 10, 15)
-	Send {Home down}
+	Send {PgUp down}
 	RanSleep(10, 20)
-	Send {Home up}
+	Send {PgUp up}
 	RanSleepOrEvent(6, 20, 25)
 	Send {LShift up}
 	RanSleep(10, 20)
@@ -159,9 +159,9 @@ MagPangSlow()
 	RanSleepWithKeyEvent(2, 4)
 	Send {Ins up}
 	RanSleep(110, 130)
-	Send {Home down}
+	Send {PgUp down}
 	RanSleepWithKeyEvent(2, 4)
-	Send {Home up}
+	Send {PgUp up}
 	RanSleepWithKeyEvent(165, 185)
 	Send {LShift up}
 	RanSleep(10, 20)
@@ -181,9 +181,9 @@ MagPangHardware()
 	RanSleep(10, 20)
 	KeyUp("Ins")
 	RanSleepOrEvent(4, 10, 15)
-	KeyDown("Home")
+	KeyDown("PgUp")
 	RanSleep(10, 20)
-	KeyUp("Home")
+	KeyUp("PgUp")
 	RanSleepOrEvent(6, 20, 25)
 	KeyUp("LShift")
 	RanSleep(10, 20)
@@ -196,23 +196,36 @@ return
 
 MagPangTest()
 {
-	KeyDown("Shift")
-	RanSleep(10, 20)
 	KeyDown("Ins")
 	RanSleep(10, 20)
 	KeyUp("Ins")
-	RanSleep(110, 130)
-	KeyDown("Home")
+	RanSleep(120, 130)
+	KeyDown("PgUp")
 	RanSleep(10, 20)
-	KeyUp("Home")
-	RanSleep(170, 190)
-	KeyUp("Shift")
-	RanSleep(10, 20)
-	KeyDown("c")
-	RanSleep(10, 20)
-	KeyUp("c")
-	RanSleep(100, 110)
+	KeyUp("PgUp")
 }
+
+ShockWaveTest2(key)
+{
+	DD._key_press("Shift")
+	RanSleep(5, 10)
+	DD._key_press(key)
+}
+return
+
+ShockWaveTest(key)
+{
+	RanSleep(5, 10)
+	KeyDown(key)
+	RanSleep(5, 10)
+	KeyDown("Shift")
+	RanSleep(5, 10)
+	KeyUp("Shift")
+	RanSleep(230, 240)
+	KeyUp(key)
+	RanSleep(5, 10)
+}
+return
 
 RelaseHammer()
 {
