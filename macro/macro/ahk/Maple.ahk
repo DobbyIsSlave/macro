@@ -31,7 +31,7 @@ if (macroActive = true)
 }
 else
 {
-	DD._key_press("q")
+	Send, q
 }
 return
 
@@ -42,7 +42,7 @@ if (macroActive = true)
 }
 else
 {
-	DD._key_press("w")
+	Send, w
 }
 return
 
@@ -53,7 +53,7 @@ if (macroActive = true)
 }
 else
 {
-	DD._key_press("a")
+	Send, a
 }
 return
 
@@ -64,7 +64,7 @@ if (macroActive = true)
 }
 else
 {
-	DD._key_press("s")
+	Send, s
 }
 return
 
