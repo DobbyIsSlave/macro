@@ -20,14 +20,17 @@ namespace macro
 
         public void LoadHotKeyFile()
         {
-#if MAPLESTORY
             ahk.LoadFile(Constants.classDDFilePath);
+            ahk.LoadFile(Constants.gdip_AllFilePath);
+            ahk.LoadFile(Constants.gdip_ImageSearchFilePath);
+            ahk.LoadFile(Constants.search_ImgFilePath);
+#if MAPLESTORY
             ahk.LoadFile(Constants.doingFilePath);
             ahk.LoadFile(Constants.blasterFilePath);
             ahk.LoadFile(Constants.strikerFilePath);
             //ahk.LoadFile(Constants.mapleFilePath);
 #elif RANDOM_DICE
-            ahk.LoadFile(Constants.classDDFilePath);
+
 #endif
         }
 
