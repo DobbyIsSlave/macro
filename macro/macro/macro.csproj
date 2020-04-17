@@ -85,6 +85,7 @@
     <None Include="ahk\MapleStory\Doing.ahk" />
     <None Include="ahk\MapleStory\Maple.ahk" />
     <None Include="ahk\MapleStory\Striker.ahk" />
+    <None Include="ahk\Random_Dice\Random_Dice.ahk" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -103,7 +104,7 @@
     <None Include="Sora.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ahk\Random_Dice\" />
+    <Folder Include="ahk\Random_Dice\Image\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
