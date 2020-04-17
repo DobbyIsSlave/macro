@@ -77,11 +77,14 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="ahk\Blaster.ahk" />
-    <None Include="ahk\Class_DD.ahk" />
-    <None Include="ahk\Doing.ahk" />
-    <None Include="ahk\Maple.ahk" />
-    <None Include="ahk\Striker.ahk" />
+    <None Include="ahk\Library\Class_DD.ahk" />
+    <None Include="ahk\Library\Gdip_all.ahk" />
+    <None Include="ahk\Library\Gdip_ImageSearch.ahk" />
+    <None Include="ahk\Library\Search_img.ahk" />
+    <None Include="ahk\MapleStory\Blaster.ahk" />
+    <None Include="ahk\MapleStory\Doing.ahk" />
+    <None Include="ahk\MapleStory\Maple.ahk" />
+    <None Include="ahk\MapleStory\Striker.ahk" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
