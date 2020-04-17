@@ -19,7 +19,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;_MAPLESTORY,_RANDOM_DICE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;_MAPLESTORY,RANDOM_DICE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -98,6 +98,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Sora.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ahk\Random_Dice\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
