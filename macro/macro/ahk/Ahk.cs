@@ -23,6 +23,7 @@ namespace macro
             ahk.LoadFile(Constants.classDDFilePath);
             ahk.LoadFile(Constants.doingFilePath);
             ahk.LoadFile(Constants.blasterFilePath);
+            ahk.LoadFile(Constants.strikerFilePath);
             //ahk.LoadFile(Constants.mapleFilePath);
         }
 

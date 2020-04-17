@@ -81,6 +81,7 @@
     <None Include="ahk\Class_DD.ahk" />
     <None Include="ahk\Doing.ahk" />
     <None Include="ahk\Maple.ahk" />
+    <None Include="ahk\Striker.ahk" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

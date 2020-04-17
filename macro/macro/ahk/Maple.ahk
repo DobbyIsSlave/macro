@@ -35,7 +35,7 @@ else
 }
 return
 
-w::
+^w::
 if (macroActive = true)
 {
 	MagPangTest()
@@ -65,6 +65,17 @@ if (macroActive = true)
 else
 {
 	Send, s
+}
+return
+
+w::
+if (macroActive = true)
+{
+	StrikerAttack()
+}
+else
+{
+	Send, w
 }
 return
 
