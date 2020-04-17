@@ -20,17 +20,21 @@ namespace macro
 
         public void LoadHotKeyFile()
         {
+#if MAPLESTORY
             ahk.LoadFile(Constants.classDDFilePath);
             ahk.LoadFile(Constants.doingFilePath);
             ahk.LoadFile(Constants.blasterFilePath);
             ahk.LoadFile(Constants.strikerFilePath);
             //ahk.LoadFile(Constants.mapleFilePath);
+#elif RANDOM_DICE
+            ahk.LoadFile(Constants.classDDFilePath);
+#endif
         }
 
         public void HotKeyRegister()
         {
             string line;
-            StreamReader file = new StreamReader(Constants.mapleFilePath);
+            StreamReader file = new StreamReader(Constants.mainFilePath);
             StringBuilder str = new StringBuilder();
             while ((line = file.ReadLine()) != null)
                 str.AppendLine(line);
