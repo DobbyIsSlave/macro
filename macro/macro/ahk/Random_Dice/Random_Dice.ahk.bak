@@ -1,0 +1,320 @@
+﻿#Include Gdip_all.ahk
+#Include Gdip_ImageSearch.ahk
+#Include Search_img.ahk
+global appPlayer := 0
+
+Gui, Add, Text, x20 y30 w70 h20, 성공횟수 :
+Gui, Add, Text, x95 y30 w40 h20 v성공횟수, 0 회
+Gui, Add, Text, x20 y10 w70 h20, 실패횟수 :
+Gui, Add, Text, x95 y10 w40 h20 v실패횟수, 0 회
+Gui, Add, Text, x20 y53 w60 h20, 횟수제한 :
+Gui, Add, Edit, x85 y50 w40 h20 v제한, -1
+Gui, Add, CheckBox, x20 y75 w120 h20 v옵션1 Checked1, 번개부족 시 번충
+Gui, Add, CheckBox, x20 y95 w120 h20 v옵션2 Checked1, 번개부족 시 번충
+Gui, Add, Text, x20 y123 w45 h20, 맵선택 :
+Gui, Add, ComboBox, x70 y120 w60 h200 v목록 g옵션선택 Choose2, 화산|던전|이계|차원|레이드|아레나|월레나|시탑
+Gui, Add, Text, x20 y148 w45 h20, 별등급 :
+Gui, Add, ComboBox, x70 y145 w60 h200 v목록2 g옵션선택2 Choose2, 1성|2성|3성|4성
+Gui, Add, Text, x150 y10 w150 h20, 룬 판매 등급 [룬선택시]
+Gui, Add, Text, x150 y38 w50 h20, 5성 :
+Gui, Add, ComboBox, x180 y35 w100 h60 v룬판매5성 Choose4, 희귀이하 판매|영웅이하 판매|모두 판매|전설 공속제외
+Gui, Add, Text, x150 y63 w50 h20, 6성 :
+Gui, Add, ComboBox, x180 y60 w100 h60 v룬판매6성 Choose1, 희귀이하 판매|영웅이하 판매
+Gui, Add, ListView, x300 y35 w200 h123 v로그 Grid, 시간     |동작
+Gui, Add, Button, x45 y182 w60 h20 g시작, 시작
+Gui, Add, Button, x155 y182 w100 h20 g정지, 정지/재시작
+Gui, Add, Button, x295 y182 w60 h20 g리셋, 리셋
+Gui, Add, Button, x405 y182 w60 h20 g종료, 종료
+Gui, Font, S8 CDefault Bold, Verdana
+Gui, Add, Text, x435 y10 w65 h20 vA, Macro Off
+Gui,Show, x1404 y803 w510 h210,  매크로
+GuiControl, Disable, 목록2
+return
+
+F1::
+
+Gui, submit, nohide
+GuiControl, , A, Macro On
+DetectHiddenWindows, On 
+SetControlDelay -1
+WinGet,appPlayer,ID,LDPlayer
+SetKeyDelay, Delay, 300
+LogAdd("시작")
+
+if (제한 = -1)
+{
+	Loop
+	{
+		Doing()
+	}
+}
+else
+{
+	Loop, %제한%
+	{
+		Doing()
+	}
+}
+
+GuiControl, , A, Macro Off
+LogAdd("끝났습니다.")
+return
+
+
+F2::
+
+pause
+return
+
+
+F3::
+
+reload
+return
+
+
+F4::
+
+ExitApp
+return
+
+
+F5::
+Gui, submit, nohide
+GuiControl, , A, Macro On
+DetectHiddenWindows, On 
+SetControlDelay -1
+WinGet,appPlayer,ID,LDPlayer
+SetKeyDelay, Delay, 300
+LogAdd("시작")
+
+Loop
+{
+	endcount := 0
+	finish := false
+	Loop, 6
+	{
+		if (Search_img("Image\advertiseCloseButton" . A_Index . ".bmp",appPlayer,VX,VY))
+		{
+			sleep, 1000
+			RanClickOkButton(VX, VY)
+			finish := true
+			sleep, 1000
+			break
+		}
+	}
+	if (finish)
+	{
+		break
+	}
+	if (endcount > 60)
+	{
+		ControlSend, , {ESC}, LDPlayer
+		break
+	}
+	LogAdd(endcount)
+	endcount++
+}
+
+GuiControl, , A, Macro Off
+LogAdd("끝났습니다.")
+return
+
+
+GuiClose:
+
+ExitApp
+return
+
+Doing()
+{
+	LogAdd("반복중...")
+	if (Search_img("Image\matchButton1.bmp",appPlayer,VX,VY))
+	{
+		LogAdd("matchButton1.bmp")
+		RanClickOkButton(VX, VY)
+		sleep, 1000
+		if (Search_img("Image\quickMatchButton1.bmp",appPlayer,VX,VY))
+		{
+			RanClickOkButton(VX, VY)
+			sleep, 1000
+			Run()
+		}
+	}
+	else if (Search_img("Image\advertiseButton1.bmp",appPlayer,VX,VY))
+	{
+		LogAdd("advertiseButton1.bmp")
+		RanClickOkButton(VX, VY)
+		sleep, 1000
+		Loop, 2
+		{
+			if (Search_img("Image\yesButton1.bmp",appPlayer,VX,VY))
+			{
+				RanClickOkButton(VX, VY)
+				break
+			}
+			sleep, 1000
+		}
+		endcount := 0
+		Loop
+		{
+			finish := false
+			Loop, 6
+			{
+				if (Search_img("Image\advertiseCloseButton" . A_Index . ".bmp",appPlayer,VX,VY))
+				{
+					LogAdd("adCloseButton" . A_Index . ".bmp")
+					sleep, 1000
+					RanClickOkButton(VX, VY)
+					finish := true
+					sleep, 1000
+					break
+				}
+			}
+			if (finish)
+			{
+				break
+			}
+			if (endcount > 60)
+			{
+				ControlSend, , {ESC}, LDPlayer
+				break
+			}
+			LogAdd(endcount)
+			endcount++
+		}
+	}
+}
+
+Run()
+{
+	Loop
+	{
+		if (Search_img("Image\okButton1.bmp",appPlayer,VX,VY))
+		{
+			RanClickOkButton(VX, VY)
+			sleep, 1000
+			break
+		}
+		Loop, 3
+		{
+			SearchAndClick("Image\DiceButton1.bmp", 500)
+		}
+		Attacker()
+	}
+}
+
+Attacker()
+{
+	SearchAndClick("Image\windUpgradeButton1.bmp", 500)
+	SearchAndClick("Image\spDamageUpgradeButton1.bmp", 500)
+	SearchAndClick("Image\poisionUpgradeButton1.bmp", 500)
+	SearchAndClick("Image\ThornUpgradeButton1.bmp", 500)
+	SearchAndClick("Image\damageBuffUpgradeButton1.bmp", 500)
+}
+
+Supporter()
+{
+	SearchAndClick("Image\windUpgradeButton1.bmp", 500)
+	SearchAndClick("Image\reverseUpgradeButton1.bmp", 500)
+	SearchAndClick("Image\coldUpgradeButton1.bmp", 500)
+	SearchAndClick("Image\lockUpgradeButton1.bmp", 500)
+	SearchAndClick("Image\defenceUpgradeButton1.bmp", 500)
+}
+
+SearchAndClick(image, delay)
+{
+	if (Search_img(image,appPlayer,VX,VY))
+	{
+		RanClickOkButton(VX, VY)
+		sleep, %delay%
+	}
+}
+
+RanClick(x1, x2, y1, y2)
+{
+	Random, randx, %x1%, %x2%
+	Random, randy, %y1%, %y2%
+	ControlClick, x%randx% y%randy%, LDPlayer
+	return
+}
+
+RanClickOkButton(VX, VY)
+{
+	Random, randx, -5, 5
+	Random, randy, -5, 5
+	VX += randx
+	VY += randy
+	ControlClick, x%VX% y%VY%, LDPlayer
+	return
+}
+
+LogAdd(텍스트)
+{
+	FormatTime, OutTime, ,H:m:s
+	LV_Add("",OutTime, 텍스트)
+	SendMessage, 0x1014, 0, 1000,SysListView321,매크로 ;스크롤 아래로 1000만큼
+	return 
+}
+
+옵션선택:
+
+GuiControlGet, 목록
+if (목록 = "화산")
+{
+	GuiControl, , 제한, 9
+	GuiControl, , 목록2, |1성|2성||3성|4성
+	GuiControl, Enable, 목록2
+}
+else if (목록 = "월레나")
+{
+	GuiControl, , 제한, 30
+}
+else
+{
+	GuiControl, , 제한, -1
+	GuiControl, , 목록2, |1성|2성||3성|4성
+	GuiControl, Disable, 목록2
+}
+return
+
+옵션선택2:
+
+GuiControlGet, 목록2
+if (목록2 = "1성")
+{
+	GuiControl, , 제한, 4
+}
+else if (목록2 = "2성")
+{
+	GuiControl, , 제한, 9
+}
+else if (목록2 = "3성")
+{
+	GuiControl, , 제한, 22
+}
+else if (목록2 = "4성")
+{
+	GuiControl, , 제한, 49
+}
+return
+
+시작:
+
+Send {F1}
+return
+
+정지:
+
+Send {F2}
+return
+
+리셋:
+
+Send {F3}
+return
+
+종료:
+
+Send {F4}
+return
