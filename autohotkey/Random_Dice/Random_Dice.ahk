@@ -38,7 +38,7 @@ Gui, submit, nohide
 GuiControl, , A, Macro On
 DetectHiddenWindows, On 
 SetControlDelay -1
-WinGet,appPlayer,ID,LDPlayer
+WinGet,appPlayer,ID,LDPlayer-2
 SetKeyDelay, Delay, 300
 LogAdd("Start")
 
@@ -87,12 +87,12 @@ Gui, submit, nohide
 GuiControl, , A, Macro On
 DetectHiddenWindows, On 
 SetControlDelay -1
-WinGet,appPlayer,ID,LDPlayer
+WinGet,appPlayer,ID,LDPlayer-2
 SetKeyDelay, Delay, 300
 LogAdd("Start")
 
-PostMessage, 0x100, 0x1b, 0x10001, RenderWindow1, LDPlayer
-PostMessage, 0x101, 0x1b, 0xc0010001, RenderWindow1, LDPlayer
+PostMessage, 0x100, 0x1b, 0x10001, RenderWindow1, LDPlayer-2
+PostMessage, 0x101, 0x1b, 0xc0010001, RenderWindow1, LDPlayer-2
 
 GuiControl, , A, Macro Off
 LogAdd("End")
@@ -105,7 +105,7 @@ Gui, submit, nohide
 GuiControl, , A, Macro On
 DetectHiddenWindows, On 
 SetControlDelay -1
-WinGet,appPlayer,ID,LDPlayer
+WinGet,appPlayer,ID,LDPlayer-2
 pToken := Gdip_Startup() 
 pBitmap := Gdip_BitmapFromHWND(appPlayer) ;포인터
 sFileTo = %A_ScriptDir%\Image\ScreenShot\%A_MM%월%A_DD%일%A_Hour%시%A_Min%분%A_Sec%초.bmp ;경로
@@ -160,9 +160,9 @@ Doing()
 			}
 			if (endcount > 40)
 			{
-				ControlSend, , {ESC}, LDPlayer
-				PostMessage, 0x100, 0x1b, 0x10001, RenderWindow1, LDPlayer
-				PostMessage, 0x101, 0x1b, 0xc0010001, RenderWindow1, LDPlayer
+				ControlSend, , {ESC}, LDPlayer-2
+				PostMessage, 0x100, 0x1b, 0x10001, RenderWindow1, LDPlayer-2
+				PostMessage, 0x101, 0x1b, 0xc0010001, RenderWindow1, LDPlayer-2
 				break
 			}
 			LogAdd("endcount : " . endcount)
@@ -171,8 +171,8 @@ Doing()
 	}
 	else if (repeatCount > 10)
 	{
-		PostMessage, 0x100, 0x1b, 0x10001, RenderWindow1, LDPlayer
-		PostMessage, 0x101, 0x1b, 0xc0010001, RenderWindow1, LDPlayer
+		PostMessage, 0x100, 0x1b, 0x10001, RenderWindow1, LDPlayer-2
+		PostMessage, 0x101, 0x1b, 0xc0010001, RenderWindow1, LDPlayer-2
 	}
 	else if (SearchAndClick("Image\CancelButton1.bmp", 1000))
 	{
@@ -243,7 +243,7 @@ RanClick(x1, x2, y1, y2)
 {
 	Random, randx, %x1%, %x2%
 	Random, randy, %y1%, %y2%
-	ControlClick, x%randx% y%randy%, LDPlayer
+	ControlClick, x%randx% y%randy%, LDPlayer-2
 	return
 }
 
@@ -253,7 +253,7 @@ RanClickOkButton2(VX, VY)
 	Random, randy, -5, 5
 	VX += randx
 	VY += randy
-	ControlClick, x%VX% y%VY%, LDPlayer
+	ControlClick, x%VX% y%VY%, LDPlayer-2
 }
 
 RanClickOkButton(VX, VY)
@@ -265,8 +265,8 @@ RanClickOkButton(VX, VY)
 	VY += randy
 
 	좌표값 := (VY * 65536) + VX
-	PostMessage, 0x201, 1, %좌표값%, RenderWindow1, LDPlayer
-	PostMessage, 0x202, 0, %좌표값%, RenderWindow1, LDPlayer
+	PostMessage, 0x201, 1, %좌표값%, RenderWindow1, LDPlayer-2
+	PostMessage, 0x202, 0, %좌표값%, RenderWindow1, LDPlayer-2
 }
 
 LogAdd(텍스트)
