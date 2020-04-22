@@ -268,55 +268,55 @@ Playing()
 
 CheckDice(dice)
 {
-	if (%dice% == "태풍")
+	if (dice = "태풍")
 	{
 		SearchAndClick("Image\typhoonUpgradeButton1.bmp", 500)
 	}
-	else if (%dice% == "SP")
+	else if (dice = "SP")
 	{
 		SearchAndClick("Image\spDamageUpgradeButton1.bmp", 500)
 	}
-	else if (%dice% == "독")
+	else if (dice = "독")
 	{
 		SearchAndClick("Image\poisionUpgradeButton1.bmp", 500)
 	}
-	else if (%dice% == "가시")
+	else if (dice = "가시")
 	{
 		SearchAndClick("Image\thornUpgradeButton1.bmp", 500)
 	}
-	else if (%dice% == "방패")
+	else if (dice = "방패")
 	{
 		SearchAndClick("Image\shieldUpgradeButton1.bmp", 500)
 	}
-	else if (%dice% == "쇠")
+	else if (dice = "쇠")
 	{
 		SearchAndClick("Image\steelUpgradeButton1.bmp", 500)
 	}
-	else if (%dice% == "바람")
+	else if (dice = "바람")
 	{
 		SearchAndClick("Image\windUpgradeButton1.bmp", 500)
 	}
-	else if (%dice% == "얼음")
+	else if (dice = "얼음")
 	{
 		SearchAndClick("Image\coldUpgradeButton1.bmp", 500)
 	}
-	else if (%dice% == "텔포")
+	else if (dice = "텔포")
 	{
 		SearchAndClick("Image\reverseUpgradeButton1.bmp", 500)
 	}
-	else if (%dice% == "잠금")
+	else if (dice = "잠금")
 	{
 		SearchAndClick("Image\lockUpgradeButton1.bmp", 500)
 	}
-	else if (%dice% == "균열")
+	else if (dice = "균열")
 	{
 		SearchAndClick("Image\crackUpgradeButton1.bmp", 500)
 	}
-	else if (%dice% == "크리")
+	else if (dice = "크리")
 	{
 		SearchAndClick("Image\criticalUpgradeButton1.bmp", 500)
 	}
-	else if (%dice% == "지옥")
+	else if (dice = "지옥")
 	{
 		SearchAndClick("Image\hellUpgradeButton1.bmp", 500)
 	}
