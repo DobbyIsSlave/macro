@@ -8,6 +8,8 @@ namespace macro
 {
     public interface IMainForm
     {
-        void SetStatus(string status);
+        void SetViewText(string control, string name, int index, string value);
+
+        string GetViewText(string control, string name, int index);
     }
 }

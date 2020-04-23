@@ -19,7 +19,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;_MAPLESTORY,_RANDOM_DICE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;_MAPLESTORY,RANDOM_DICE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -77,14 +77,45 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="ahk\Library\Class_DD.ahk" />
-    <None Include="ahk\Library\Gdip_all.ahk" />
-    <None Include="ahk\Library\Gdip_ImageSearch.ahk" />
-    <None Include="ahk\Library\Search_img.ahk" />
-    <None Include="ahk\MapleStory\Blaster.ahk" />
-    <None Include="ahk\MapleStory\Doing.ahk" />
-    <None Include="ahk\MapleStory\Maple.ahk" />
-    <None Include="ahk\MapleStory\Striker.ahk" />
+    <Content Include="ahk\Library\Class_DD.ahk">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Library\Gdip_all.ahk">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Library\Gdip_ImageSearch.ahk">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Library\Search_img.ahk">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\MapleStory\Blaster.ahk">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\MapleStory\Doing.ahk">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\MapleStory\Maple.ahk">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\MapleStory\Striker.ahk">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Random_Dice\Gdip_all.ahk">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Random_Dice\Gdip_ImageSearch.ahk">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Random_Dice\Random_Dice.ahk">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Random_Dice\Search_img.ahk">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Random_Dice\Main0.ahk">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -101,6 +132,177 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Sora.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ahk\Random_Dice\Image\advertiseButton1.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Random_Dice\Image\advertiseClose1.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Random_Dice\Image\advertiseClose2.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Random_Dice\Image\advertiseClose3.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Random_Dice\Image\advertiseClose4.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Random_Dice\Image\advertiseClose5.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Random_Dice\Image\advertiseClose6.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Random_Dice\Image\advertiseClose7.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Random_Dice\Image\advertiseCloseButton1.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Random_Dice\Image\advertiseCloseButton2.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Random_Dice\Image\advertiseCloseButton3.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Random_Dice\Image\advertiseCloseButton4.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Random_Dice\Image\advertiseCloseButton5.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Random_Dice\Image\advertiseCloseButton6.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Random_Dice\Image\CancelButton1.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Random_Dice\Image\coldUpgradeButton1.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Random_Dice\Image\crackUpgradeButton1.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Random_Dice\Image\criticalUpgradeButton1.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Random_Dice\Image\DiceButton1.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Random_Dice\Image\hellUpgradeButton1.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Random_Dice\Image\lockUpgradeButton1.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Random_Dice\Image\main1.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Random_Dice\Image\main10.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Random_Dice\Image\main11.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Random_Dice\Image\main12.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Random_Dice\Image\main13.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Random_Dice\Image\main14.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Random_Dice\Image\main15.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Random_Dice\Image\main16.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Random_Dice\Image\main17.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Random_Dice\Image\main18.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Random_Dice\Image\main19.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Random_Dice\Image\main2.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Random_Dice\Image\main20.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Random_Dice\Image\main21.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Random_Dice\Image\main3.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Random_Dice\Image\main4.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Random_Dice\Image\main5.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Random_Dice\Image\main6.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Random_Dice\Image\main7.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Random_Dice\Image\main8.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Random_Dice\Image\main9.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Random_Dice\Image\matchButton1.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Random_Dice\Image\matchButton2.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Random_Dice\Image\okButton1.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Random_Dice\Image\poisionUpgradeButton1.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Random_Dice\Image\quickMatchButton1.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Random_Dice\Image\reverseUpgradeButton1.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Random_Dice\Image\ScreenShot\04월20일00시30분34초.bmp" />
+    <Content Include="ahk\Random_Dice\Image\ScreenShot\04월21일00시01분24초.bmp" />
+    <Content Include="ahk\Random_Dice\Image\ScreenShot\04월21일00시18분12초.bmp" />
+    <Content Include="ahk\Random_Dice\Image\shieldUpgradeButton1.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Random_Dice\Image\spDamageUpgradeButton1.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Random_Dice\Image\steelUpgradeButton1.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Random_Dice\Image\thornUpgradeButton1.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Random_Dice\Image\typhoonUpgradeButton1.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Random_Dice\Image\vvip\vvipMain1.bmp" />
+    <Content Include="ahk\Random_Dice\Image\windUpgradeButton1.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ahk\Random_Dice\Image\yesButton1.bmp">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
