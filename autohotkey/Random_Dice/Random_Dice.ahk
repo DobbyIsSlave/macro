@@ -3,7 +3,16 @@
 #Include Gdip_all.ahk
 #Include Gdip_ImageSearch.ahk
 #Include Search_img.ahk
+#NoTrayIcon
 
+;이미지 로드
+
+
+;onedrive
+;URLDownloadToFile, https://onedrive.live.com/download?cid=D0CC7D42B27EDDFA&resid=D0CC7D42B27EDDFA`%21620&authkey=APrPUn8zaeKGPq4, UpdateVer.txt
+
+
+;google drive
 URLDownloadToFile, https://docs.google.com/uc?export=download&id=1qPHReOPhW55Q-fYpIgPGa8R8KtU5PJLu, UpdateVer.txt
 FileRead, updateVer, UpdateVer.txt
 FileDelete, UpdateVer.txt
@@ -161,20 +170,20 @@ return
 Doing()
 {
 	LogAdd("Repeat...")
-	if (SearchAndClick("Image\matchButton1.bmp", 2000) || SearchAndClick("Image\matchButton2.bmp", 2000))
+	if (SearchAndClickProtectError("Image\matchButton1.bmp", 2000) || SearchAndClickProtectError("Image\matchButton2.bmp", 2000))
 	{
 		repeatCount := 0
-		if (SearchAndClick("Image\quickMatchButton1.bmp", 1000))
+		if (SearchAndClickProtectError("Image\quickMatchButton1.bmp", 1000))
 		{
 			Run()
 		}
 	}
-	else if (SearchAndClick("Image\advertiseButton1.bmp", 1000))
+	else if (SearchAndClickProtectError("Image\advertiseButton1.bmp", 1000))
 	{
 		repeatCount := 0
 		Loop, 2
 		{
-			if (SearchAndClick("Image\yesButton1.bmp", 0))
+			if (SearchAndClickProtectError("Image\yesButton1.bmp", 0))
 			{
 				break
 			}
@@ -185,9 +194,9 @@ Doing()
 		{
 			LogAdd("Wait For Close")
 			finish := false
-			Loop, 7
+			Loop, 8
 			{
-				if (SearchAndClick("Image\advertiseCloseButton" . A_Index . ".bmp", 1000))
+				if (SearchAndClickProtectError("Image\advertiseCloseButton" . A_Index . ".bmp", 1000))
 				{
 					finish := true
 					break
@@ -212,6 +221,10 @@ Doing()
 		PostMessage, 0x100, 0x1b, 0x10001, RenderWindow1, %appPlayerName%
 		PostMessage, 0x101, 0x1b, 0xc0010001, RenderWindow1, %appPlayerName%
 	}
+	else if (repeatCount > 60)
+	{
+		;TODO : 껏다키기
+	}
 	else if (SearchAndClick("Image\cancelButton1.bmp", 2000))
 	{
 	}
@@ -228,9 +241,13 @@ Run()
 	runCount := 0
 	Loop
 	{
-		if (SearchAndClick("Image\okButton1.bmp", 1000) || SearchAndClick("Image\okButton2.bmp", 1000))
+		if (SearchAndClickProtectError("Image\okButton1.bmp", 1000) || SearchAndClickProtectError("Image\okButton2.bmp", 1000))
 		{
 			runCount := 0
+			break
+		}
+		else if (Search("Image\matchButton1.bmp") || Search("Image\matchButton2.bmp"))
+		{
 			break
 		}
 		Loop, 3
@@ -322,13 +339,91 @@ CheckDice(dice)
 	}
 }
 
+SearchAndClickProtectError(image, delay)
+{
+	if (Search_img(image,appPlayerID,VX,VY))
+	{
+		LogAdd(image)
+		sleep, 300
+		RanClickOkButton(VX, VY)
+		sleep, %delay%
+		if (Search_img(image,appPlayerID,VX,VY))
+		{
+			LogAdd("again" . image)
+			sleep, 300
+			RanClickOkButton(VX, VY)
+			sleep, %delay%
+			return true
+		}
+		else
+		{
+			return true
+		}
+	}
+	return false
+}
+
+SearchHbmpAndClickProtectError(hbmp, delay)
+{
+	if (Search_img(hbmp,appPlayerID,VX,VY))
+	{
+		sleep, 300
+		RanClickOkButton(VX, VY)
+		sleep, %delay%
+		if (Search_img(hbmp,appPlayerID,VX,VY))
+		{
+			sleep, 300
+			RanClickOkButton(VX, VY)
+			sleep, %delay%
+			return true
+		}
+		else
+		{
+			return true
+		}
+	}
+	return false
+}
+
+SearchHbmpAndClick(hbmp, delay)
+{
+	if (SearchFromHbitmap(hbmp,appPlayerID,VX,VY))
+	{
+		sleep, 300
+		RanClickOkButton(VX, VY)
+		sleep, %delay%
+		return true
+	}
+	return false
+}
+
 SearchAndClick(image, delay)
 {
 	if (Search_img(image,appPlayerID,VX,VY))
 	{
 		LogAdd(image)
+		sleep, 300
 		RanClickOkButton(VX, VY)
 		sleep, %delay%
+		return true
+	}
+	return false
+}
+
+SearchHbmp(hbmp)
+{
+	if (SearchFromHbitmap(hbmp,appPlayerID,VX,VY))
+	{
+		return true
+	}
+	return false
+}
+
+Search(image)
+{
+	if (Search_img(image,appPlayerID,VX,VY))
+	{
+		LogAdd(image)
 		return true
 	}
 	return false
