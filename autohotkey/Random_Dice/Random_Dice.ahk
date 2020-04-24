@@ -6,7 +6,7 @@
 #NoTrayIcon
 
 ;이미지 로드
-
+#Include Load_hbmp.ahk
 
 ;onedrive
 ;URLDownloadToFile, https://onedrive.live.com/download?cid=D0CC7D42B27EDDFA&resid=D0CC7D42B27EDDFA`%21620&authkey=APrPUn8zaeKGPq4, UpdateVer.txt
@@ -170,20 +170,20 @@ return
 Doing()
 {
 	LogAdd("Repeat...")
-	if (SearchAndClickProtectError("Image\matchButton1.bmp", 2000) || SearchAndClickProtectError("Image\matchButton2.bmp", 2000))
+	if (SearchHbmpAndClickProtectError(matchButton1, 2000) || SearchHbmpAndClickProtectError(matchButton2, 2000))
 	{
 		repeatCount := 0
-		if (SearchAndClickProtectError("Image\quickMatchButton1.bmp", 1000))
+		if (SearchHbmpAndClickProtectError(quickMatchButton1, 1000))
 		{
 			Run()
 		}
 	}
-	else if (SearchAndClickProtectError("Image\advertiseButton1.bmp", 1000))
+	else if (SearchHbmpAndClickProtectError(advertiseButton1, 1000))
 	{
 		repeatCount := 0
 		Loop, 2
 		{
-			if (SearchAndClickProtectError("Image\yesButton1.bmp", 0))
+			if (SearchHbmpAndClickProtectError(yesButton1, 0))
 			{
 				break
 			}
@@ -196,7 +196,8 @@ Doing()
 			finish := false
 			Loop, 8
 			{
-				if (SearchAndClickProtectError("Image\advertiseCloseButton" . A_Index . ".bmp", 1000))
+				temp := advertiseCloseButton%A_Index%
+				if (SearchHbmpAndClickProtectError(temp, 1000))
 				{
 					finish := true
 					break
@@ -225,13 +226,13 @@ Doing()
 	{
 		;TODO : 껏다키기
 	}
-	else if (SearchAndClick("Image\cancelButton1.bmp", 2000))
+	else if (SearchHbmpAndClick(cancelButton1, 2000))
 	{
 	}
-	else if (SearchAndClick("Image\agreeButton1.bmp", 1000))
+	else if (SearchHbmpAndClick(agreeButton1, 1000))
 	{
 	}
-	else if (SearchAndClick("Image\okButton1.bmp", 1000) || SearchAndClick("Image\okButton2.bmp", 1000))
+	else if (SearchHbmpAndClick(okButton1, 1000) || SearchHbmpAndClick(okButton2, 1000))
 	{
 	}
 }
@@ -241,18 +242,18 @@ Run()
 	runCount := 0
 	Loop
 	{
-		if (SearchAndClickProtectError("Image\okButton1.bmp", 1000) || SearchAndClickProtectError("Image\okButton2.bmp", 1000))
+		if (SearchHbmpAndClickProtectError(okButton1, 1000) || SearchHbmpAndClickProtectError(okButton2, 1000))
 		{
 			runCount := 0
 			break
 		}
-		else if (Search("Image\matchButton1.bmp") || Search("Image\matchButton2.bmp"))
+		else if (SearchHbmp(matchButton1) || SearchHbmp(matchButton2))
 		{
 			break
 		}
 		Loop, 3
 		{
-			if (SearchAndClick("Image\DiceButton1.bmp", 500))
+			if (SearchHbmpAndClick(DiceButton1, 500))
 			{
 				runCount := 0
 			}
@@ -287,56 +288,79 @@ CheckDice(dice)
 {
 	if (dice = "태풍")
 	{
-		SearchAndClick("Image\typhoonUpgradeButton1.bmp", 500)
+		SearchHbmpAndClick(typhoonUpgradeButton1, 500)
 	}
 	else if (dice = "SP")
 	{
-		SearchAndClick("Image\spDamageUpgradeButton1.bmp", 500)
+		SearchHbmpAndClick(spDamageUpgradeButton1, 500)
 	}
 	else if (dice = "독")
 	{
-		SearchAndClick("Image\poisionUpgradeButton1.bmp", 500)
+		SearchHbmpAndClick(poisionUpgradeButton1, 500)
 	}
 	else if (dice = "가시")
 	{
-		SearchAndClick("Image\thornUpgradeButton1.bmp", 500)
+		SearchHbmpAndClick(thornUpgradeButton1, 500)
 	}
 	else if (dice = "방패")
 	{
-		SearchAndClick("Image\shieldUpgradeButton1.bmp", 500)
+		SearchHbmpAndClick(shieldUpgradeButton1, 500)
 	}
 	else if (dice = "쇠")
 	{
-		SearchAndClick("Image\steelUpgradeButton1.bmp", 500)
+		SearchHbmpAndClick(steelUpgradeButton1, 500)
 	}
 	else if (dice = "바람")
 	{
-		SearchAndClick("Image\windUpgradeButton1.bmp", 500)
+		SearchHbmpAndClick(windUpgradeButton1, 500)
 	}
 	else if (dice = "얼음")
 	{
-		SearchAndClick("Image\coldUpgradeButton1.bmp", 500)
+		SearchHbmpAndClick(coldUpgradeButton1, 500)
 	}
 	else if (dice = "텔포")
 	{
-		SearchAndClick("Image\reverseUpgradeButton1.bmp", 500)
+		SearchHbmpAndClick(reverseUpgradeButton1, 500)
 	}
 	else if (dice = "잠금")
 	{
-		SearchAndClick("Image\lockUpgradeButton1.bmp", 500)
+		SearchHbmpAndClick(lockUpgradeButton1, 500)
 	}
 	else if (dice = "균열")
 	{
-		SearchAndClick("Image\crackUpgradeButton1.bmp", 500)
+		SearchHbmpAndClick(crackUpgradeButton1, 500)
 	}
 	else if (dice = "크리")
 	{
-		SearchAndClick("Image\criticalUpgradeButton1.bmp", 500)
+		SearchHbmpAndClick(criticalUpgradeButton1, 500)
 	}
 	else if (dice = "지옥")
 	{
-		SearchAndClick("Image\hellUpgradeButton1.bmp", 500)
+		SearchHbmpAndClick(hellUpgradeButton1, 500)
 	}
+}
+
+SearchHbmpAndClickProtectError(hbmp, delay)
+{
+	if (Search_img(hbmp,appPlayerID,VX,VY))
+	{
+		LogAdd("image")
+		sleep, 300
+		RanClickOkButton(VX, VY)
+		sleep, %delay%
+		if (Search_img(hbmp,appPlayerID,VX,VY))
+		{
+			sleep, 300
+			RanClickOkButton(VX, VY)
+			sleep, %delay%
+			return true
+		}
+		else
+		{
+			return true
+		}
+	}
+	return false
 }
 
 SearchAndClickProtectError(image, delay)
@@ -363,32 +387,11 @@ SearchAndClickProtectError(image, delay)
 	return false
 }
 
-SearchHbmpAndClickProtectError(hbmp, delay)
-{
-	if (Search_img(hbmp,appPlayerID,VX,VY))
-	{
-		sleep, 300
-		RanClickOkButton(VX, VY)
-		sleep, %delay%
-		if (Search_img(hbmp,appPlayerID,VX,VY))
-		{
-			sleep, 300
-			RanClickOkButton(VX, VY)
-			sleep, %delay%
-			return true
-		}
-		else
-		{
-			return true
-		}
-	}
-	return false
-}
-
 SearchHbmpAndClick(hbmp, delay)
 {
 	if (SearchFromHbitmap(hbmp,appPlayerID,VX,VY))
 	{
+		LogAdd("image")
 		sleep, 300
 		RanClickOkButton(VX, VY)
 		sleep, %delay%
@@ -414,6 +417,7 @@ SearchHbmp(hbmp)
 {
 	if (SearchFromHbitmap(hbmp,appPlayerID,VX,VY))
 	{
+		LogAdd("image")
 		return true
 	}
 	return false
