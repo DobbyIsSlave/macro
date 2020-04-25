@@ -97,7 +97,7 @@ Gui, Add, Button, x440 y182 w60 h20 g종료, 종료
 
 Gui, Font, S8 CDefault Bold, Verdana
 Gui, Add, Text, x435 y10 w65 h20 vA, Macro Off
-Gui,Show, x1404 y803 w510 h210,  매크로
+Gui,Show, x1404 y803 w510 h210,  Dice
 GuiControl, Disable, 목록2
 return
 
@@ -129,10 +129,12 @@ LogAdd("End")
 return
 
 
+/*
 F2::
 
 pause
 return
+*/
 
 
 F3::
@@ -173,7 +175,7 @@ Doing()
 	if (SearchHbmpAndClickProtectError(matchButton1, 2000) || SearchHbmpAndClickProtectError(matchButton2, 2000))
 	{
 		repeatCount := 0
-		if (SearchHbmpAndClickProtectError(quickMatchButton1, 1000))
+		if (SearchHbmpAndClickProtectError(quickMatchButton1, 1000) || SearchHbmpAndClickProtectError(quickMatchButton2, 1000))
 		{
 			Run()
 		}
@@ -219,12 +221,33 @@ Doing()
 	}
 	else if (repeatCount > 10)
 	{
-		PostMessage, 0x100, 0x1b, 0x10001, RenderWindow1, %appPlayerName%
+		PostMessage, 0x100, 0x1b, 0x10001, RenderWindow1, %appPlayerName%  ;ESC
 		PostMessage, 0x101, 0x1b, 0xc0010001, RenderWindow1, %appPlayerName%
 	}
 	else if (repeatCount > 60)
 	{
-		;TODO : 껏다키기
+		repeatCount := 0
+		
+		PostMessage, 0x100, 0x71, 0x3c0001, RenderWindow1, %appPlayerName%  ;F2
+		PostMessage, 0x101, 0x71, 0xc03c0001, RenderWindow1, %appPlayerName%
+		
+		sleep, 3000
+		
+		if (SearchHbmpAndClickProtectError(diceCloseButton1, 2000))
+		{
+			Loop, 3
+			{
+				if (SearchHbmpAndClickProtectError(startDiceIcon1, 10000))
+				{
+					break
+				}
+				else
+				{
+					PostMessage, 0x100, 0x71, 0x3c0001, RenderWindow1, %appPlayerName%  ;F2
+					PostMessage, 0x101, 0x71, 0xc03c0001, RenderWindow1, %appPlayerName%
+				}
+			}
+		}
 	}
 	else if (SearchHbmpAndClick(cancelButton1, 2000))
 	{
@@ -253,7 +276,7 @@ Run()
 		}
 		Loop, 3
 		{
-			if (SearchHbmpAndClick(DiceButton1, 500))
+			if (SearchHbmpAndClick(diceButton1, 500))
 			{
 				runCount := 0
 			}
@@ -342,9 +365,8 @@ CheckDice(dice)
 
 SearchHbmpAndClickProtectError(hbmp, delay)
 {
-	if (Search_img(hbmp,appPlayerID,VX,VY))
+	if (SearchFromHbitmap(hbmp,appPlayerID,VX,VY))
 	{
-		LogAdd("image")
 		sleep, 300
 		RanClickOkButton(VX, VY)
 		sleep, %delay%
@@ -391,7 +413,6 @@ SearchHbmpAndClick(hbmp, delay)
 {
 	if (SearchFromHbitmap(hbmp,appPlayerID,VX,VY))
 	{
-		LogAdd("image")
 		sleep, 300
 		RanClickOkButton(VX, VY)
 		sleep, %delay%
@@ -417,7 +438,6 @@ SearchHbmp(hbmp)
 {
 	if (SearchFromHbitmap(hbmp,appPlayerID,VX,VY))
 	{
-		LogAdd("image")
 		return true
 	}
 	return false
@@ -527,7 +547,8 @@ return
 
 정지:
 
-Send {F2}
+;Send {F2}
+pause
 return
 
 엔드:

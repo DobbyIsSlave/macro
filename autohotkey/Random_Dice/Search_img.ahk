@@ -22,7 +22,7 @@ Search_Img(image,hwnd, byref vx, byref vy, e1 = "50", x1 = "0", x2 = "0", y1 = "
 	}
 }
 
-SearchFromHbitmap(hbmp,hwnd, byref vx, byref vy, e1 = "50", x1 = "0", x2 = "0", y1 = "0", y2 = "0")
+SearchFromHbitmap(hbmp,hwnd, byref vx, byref vy, e1 = "30", x1 = "0", x2 = "0", y1 = "0", y2 = "0")
 {
 	pToken:=Gdip_Startup() 
 	pBitmapHayStack:=Gdip_BitmapFromhwnd(hwnd) 
