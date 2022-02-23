@@ -16,11 +16,16 @@ namespace macro
         public static readonly string main1FilePath = Application.StartupPath + "\\ahk\\Random_Dice\\Random_Dice.ahk";
 #endif
 
+        /* 메이플 */
         public static readonly string mapleFilePath = Application.StartupPath + "\\ahk\\MapleStory\\Maple.ahk";
         public static readonly string doingFilePath = Application.StartupPath + "\\ahk\\MapleStory\\Doing.ahk";
         public static readonly string blasterFilePath = Application.StartupPath + "\\ahk\\MapleStory\\Blaster.ahk";
         public static readonly string strikerFilePath = Application.StartupPath + "\\ahk\\MapleStory\\Striker.ahk";
 
+        /* 랜덤다이스 */
+        public static readonly string imageFilePath = Application.StartupPath + "\\ahk\\Random_Dice\\Image\\";
+
+        /* 라이브러리 */
         public static readonly string classDDFilePath = Application.StartupPath + "\\ahk\\Library\\Class_DD.ahk";
         public static readonly string gdip_AllFilePath = Application.StartupPath + "\\ahk\\Library\\Gdip_all.ahk";
         public static readonly string gdip_ImageSearchFilePath = Application.StartupPath + "\\ahk\\Library\\Gdip_ImageSearch.ahk";
