@@ -12,7 +12,8 @@ namespace macro
 #if MAPLESTORY
         public static readonly string mainFilePath = Application.StartupPath + "\\ahk\\MapleStory\\Maple.ahk";
 #elif RANDOM_DICE
-        public static readonly string mainFilePath = Application.StartupPath + "\\ahk\\Random_Dice\\Random_Dice.ahk";
+        public static readonly string main0FilePath = Application.StartupPath + "\\ahk\\Random_Dice\\main0.ahk";
+        public static readonly string main1FilePath = Application.StartupPath + "\\ahk\\Random_Dice\\Random_Dice.ahk";
 #endif
 
         /* 메이플 */

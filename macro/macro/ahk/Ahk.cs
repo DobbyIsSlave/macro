@@ -12,10 +12,12 @@ namespace macro
     public class AHK
     {
         AutoHotkey.Interop.AutoHotkeyEngine ahk;
+        private IAhkListener ahkListener;
 
-        public AHK()
+        public AHK(IAhkListener ahkListener)
         {
             ahk = new AutoHotkey.Interop.AutoHotkeyEngine();
+            this.ahkListener = ahkListener;
         }
 
         public void LoadHotKeyFile()
@@ -36,11 +38,37 @@ namespace macro
 
         public void HotKeyRegister()
         {
+            string AppPlayer = ahkListener.OnGetViewText("TextBox", "AppPlayer", -1);
+            string[] DiceList = new string[5];
+            for (int index = 0; index < 5; index++)
+            {
+                DiceList[index] = ahkListener.OnGetViewText("ComboBox", "Dice", index);
+            }
+
             string line;
-            StreamReader file = new StreamReader(Constants.mainFilePath);
+            StreamReader file;
             StringBuilder str = new StringBuilder();
+
+
+            str.AppendLine(@"global appPlayerName := """ + AppPlayer + @"""");
+
+
+            file = new StreamReader(Constants.main0FilePath);
             while ((line = file.ReadLine()) != null)
                 str.AppendLine(line);
+
+
+            for (int index = 0; index < 5; index++)
+            {
+                str.AppendLine(@"global " + index.ToString() + @"번째 := """ + DiceList[index] + @"""");
+            }
+
+
+            file = new StreamReader(Constants.main1FilePath);
+            while ((line = file.ReadLine()) != null)
+                str.AppendLine(line);
+
+
             ahk.ExecRaw(str.ToString());
         }
     }
